@@ -40,7 +40,7 @@
                         <form action="/new_msg/" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             <input type="hidden" name="id" value="{{ x.id }}">
-                            <input type="text" class="form-control" name="content" placeholder="500字以下"
+                            <input type="text" class="form-control" name="content" placeholder="500字以下" maxlength="500"
                                     value="{{ x.content }}">
 
                             <button type="submit" class="btn btn-success" style="float: right">发布</button>
