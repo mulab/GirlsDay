@@ -15,7 +15,7 @@ $('.person').click(function() {
             break;
         }
     }
-    $('#model_avatar').src = image_src;
+    $('#model_avatar').attr('src', image_src);
     $('#myModalLabel').html('留言内容-' + name);
     $('#model_content').html(content);
     $('#myModal').modal();
