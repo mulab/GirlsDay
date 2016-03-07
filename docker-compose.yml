@@ -6,10 +6,10 @@ services:
     networks:
       - globalproxy_default
     volumes:
-      - database:db.sqlite3
+      - database:/usr/src/app/db.sqlite3
     restart: always
 volumes:
-  web:
+  database:
     driver: local
 networks:
   globalproxy_default:
