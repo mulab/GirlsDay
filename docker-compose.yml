@@ -6,10 +6,12 @@ services:
     networks:
       - globalproxy_default
     volumes:
-      - database:/usr/src/app/db.sqlite3
-    restart: always
+      - database:/usr/src/app/db
+      - avatar:/usr/src/app/app/media/avatar
 volumes:
   database:
+    driver: local
+  avatar:
     driver: local
 networks:
   globalproxy_default:
