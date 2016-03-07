@@ -2,7 +2,6 @@ version: '2'
 services:
   web:
     build: .
-    restart: always
     networks:
       - globalproxy_default
     volumes:
