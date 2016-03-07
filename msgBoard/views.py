@@ -43,8 +43,14 @@ def new_msg(request):
     girl = Girl.objects.filter(id=girl_id).all()
     if len(girl) == 0:
         return HttpResponseRedirect('/')
-    msg = Message(sender=user, girl=girl[0], content=message)
-    msg.save()
+    current = Message.objects.filter(sender=request.user, girl=girl[0]).all()
+    if len(current) == 0:
+        msg = Message(sender=user, girl=girl[0], content=message)
+        msg.save()
+    else:
+        old = current[0]
+        old.content = message
+        old.save()
     return HttpResponseRedirect('/')
 
 
