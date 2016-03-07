@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if not user.is_authenticated %}
+        <div class="center">
+            <div class="register_base panel panel-default ">
+                <h2>输入暗号吧 OwO</h2>
+                {% if error %}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <strong>Error!</strong> {{ error }}
+                    </div>
+                {% endif %}
+                <div id="show-error"></div>
+                <form class="form-base" onsubmit="return check(this)" action="/" method="post"
+                      enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="m-row">
+                        <label for="id_username">暗号:</label>
+                        <input type="text" class="form-control" placeholder="天王盖地虎" id="id_password" maxlength="20"
+                               name="password" value="{{ password }}">
+                    </div>
+
+                    <input type="submit" class="btn btn-success m-btn" value="确定啦！">
+                </form>
+            </div>
+        </div>
+    {% else %}
+        {% if not girl_list %}
+            <h2 class="center">暂时还没有添加妹子</h2>
+        {% else %}
+            {% for x in girl_list %}
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ x.name }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="/new_msg/" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{ x.id }}">
+                            <input type="text" class="form-control" name="content" placeholder="500字以下"
+                                    value="{{ x.content }}">
+
+                            <button type="submit" class="btn btn-success" style="float: right">发布</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block extracss %}
+    {% if not user.is_authenticated %}
+        <link rel="stylesheet" type="text/css" href="/static/styles/register.css"/>
+    {% else %}
+    {% endif %}
+{% endblock %}
+
+{% block extrascripts %}
+    {% if not user.is_authenticated %}
+        <script src="/static/scripts/form-check.js"></script>
+        <script>
+            function check(thisform) {
+                with (thisform) {
+                    if (validate_required(password, "请填写暗号") == false) {
+                        password.focus();
+                        return false
+                    }
+                    return true;
+                }
+            }
+        </script>
+    {% else %}
+    {% endif %}
+{% endblock %}

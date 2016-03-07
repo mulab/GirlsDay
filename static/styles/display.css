@@ -1,0 +1,46 @@
+.avatar {
+    border-radius: 100%;
+    max-height: 80%;
+    max-width: 80%;
+    text-align: center;
+    margin-left: 10%;
+    margin-top: 10%;
+    transition: .4s all ease-in-out;
+}
+
+.model-avatar {
+    height: 16%;
+    width: 16%;
+    margin-left: 42%;
+    margin-top: 0;
+}
+
+.name {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.person {
+    padding: 0 2px;
+    transition: .4s all ease-in-out;
+    border-radius: 5px;
+}
+
+.person:hover {
+    cursor: pointer;
+    background: #7755bb;
+}
+
+.person:hover img {
+    transform: rotate(360deg);
+}
+
+.center {
+    text-align: center;
+}
+
+#model_content {
+    margin-top: 20px;
+    font-size: 1.3em;
+}

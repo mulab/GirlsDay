@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block content %}
+    {% if not msg_list %}
+        <h1>暂时还没有留言啦</h1>
+    {% else %}
+        <h4 class="center">留言板</h4>
+        <div class="row">
+            {% for x in msg_list %}
+                <div class="col-md-2 col-lg-2 col-sm-4">
+                    <div id="{{ x.sender.id }}" class="person">
+                        <img class="avatar"
+                             src={% thumbnail x.sender.image 200x200 box=x.sender.cropping crop detail %}>
+
+                        <p class="name">{{ x.sender.name }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">留言内容</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img class="avatar center model-avatar" id="model_avatar"
+                             src='/media/photos/001.jpg'>
+                        <p id="model_content">Hello World</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" type="text/css" href="/static/styles/display.css"/>
+{% endblock %}
+
+{% block extrascripts %}
+    <script>
+        var list = [
+            {% if msg_list %}
+                {% for x in msg_list %}
+                    {
+                        name: '{{ x.sender.name }}',
+                        content: '{{ x.content }}',
+                        sender_id: {{ x.sender.id }}
+                    },
+                {% endfor %}
+            {% endif %}
+        ];
+    </script>
+    <script src="/static/scripts/display.js"></script>
+{% endblock %}

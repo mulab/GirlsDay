@@ -1,0 +1,21 @@
+.footer {
+    /*margin-top: 100px;*/
+    text-align: center;
+    bottom: 0;
+    color: #000;
+    width: 100%;
+    padding: 19px 15px 0 15px;
+}
+
+html, body {
+    font-family: "Roboto", "Microsoft YaHei", "????", "????", sans-serif;
+}
+
+.container {
+    max-width: 1300px;
+}
+
+.num {
+    color: orange;
+    margin-left: 3px;
+}
