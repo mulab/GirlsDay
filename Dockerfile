@@ -4,4 +4,4 @@ ENV DEBUG=False
 
 EXPOSE 80
 
-CMD ["/usr/local/bin/uwsgi", "--ini", "uwsgi.ini"]
+CMD python manage.py runserver 0.0.0.0:80
