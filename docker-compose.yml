@@ -6,8 +6,8 @@ services:
       - globalproxy_default
     volumes:
       - database:/usr/src/app/db
-      - avatar:/usr/src/app/app/media/avatar
-      - migrations:/usr/src/app/app/msgBoard/migrations
+      - avatar:/usr/src/app/media/avatar
+      - migrations:/usr/src/app/msgBoard/migrations
 volumes:
   database:
     driver: local
