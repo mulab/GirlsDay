@@ -80,8 +80,14 @@ class Girl(models.Model):
     name = models.CharField(max_length=10)
     password = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.name
+
 
 class Message(models.Model):
     sender = models.ForeignKey('User')
     girl = models.ForeignKey('Girl')
     content = models.CharField(max_length=500)
+
+    def __str__(self):
+        return "FROM:" + str(sender) + " TO:" + str(girl) + " CONTENT:"+ self.content
