@@ -90,4 +90,4 @@ class Message(models.Model):
     content = models.CharField(max_length=500)
 
     def __str__(self):
-        return "FROM:" + str(sender) + " TO:" + str(girl) + " CONTENT:"+ self.content
+        return "FROM:" + str(self.sender) + " TO:" + str(self.girl) + " CONTENT:"+ self.content
