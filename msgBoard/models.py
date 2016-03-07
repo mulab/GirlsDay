@@ -39,8 +39,8 @@ class User(AbstractBaseUser):
     email = models.EmailField(max_length=254, unique=True)
     name = models.CharField(max_length=50, db_index=True, unique=True)
     image = ImageCropField(
-        upload_to='photos/',
-        default=os.path.join('photos', '001.jpg').replace('\\', '/')
+        upload_to='avatar/',
+        default=os.path.join('', 'default.jpg').replace('\\', '/')
     )
     cropping = ImageRatioField('image', '200x200', allow_fullsize=True)
     is_active = models.BooleanField(default=False)

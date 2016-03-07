@@ -64,3 +64,5 @@ msgBoard/migrations/
 
 #database
 *.sqlite3
+
+media/avatar/
