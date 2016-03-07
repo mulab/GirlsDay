@@ -18,7 +18,6 @@ def index(request):
                                                       'password': password})
             girl = girl_list[0]
             msg_list = Message.objects.filter(girl=girl).all()
-            print(msg_list[0].content)
             return render(request, "display.html", {'msg_list': msg_list})
         else:
             render(request, "index.html")
